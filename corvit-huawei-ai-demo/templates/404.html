@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Page not found — {{ site_name }}{% endblock %}
+
+{% block content %}
+<section class="error-page">
+  <div class="error-code">404</div>
+  <h1>This page doesn't exist</h1>
+  <p>The page you're looking for may have been moved or the link may be out of date. Try heading back to
+    the homepage or straight to the AI Price Predictor.</p>
+  <div class="hero-actions" style="justify-content:center;">
+    <a class="btn btn-primary" href="{{ url_for('home') }}">Back to home</a>
+    <a class="btn btn-ghost" href="{{ url_for('predictor_page') }}">AI Price Predictor</a>
+  </div>
+</section>
+{% endblock %}

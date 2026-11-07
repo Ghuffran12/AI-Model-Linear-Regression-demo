@@ -1,0 +1,29 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# --- Virtual environments ---
+venv/
+.venv/
+env/
+
+# --- Environment / secrets ---
+.env
+
+# --- Editors / OS ---
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# --- Flask ---
+instance/
+
+# NOTE: data/property_data.csv and models/*.joblib + model_metadata.json
+# are intentionally NOT ignored. They are required project deliverables
+# (a ready-to-run trained model and dataset) -- see README.md. Delete
+# them and re-run `python ml/train_model.py` any time to regenerate
+# both from scratch.

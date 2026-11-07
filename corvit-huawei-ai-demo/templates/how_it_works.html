@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block title %}How It Works — {{ site_name }}{% endblock %}
+
+{% block content %}
+
+<header class="page-header">
+  <div class="container">
+    <p class="eyebrow">From input to estimate</p>
+    <h1>How it works</h1>
+    <p>Five steps turn a plot size into a price estimate — every one of them runs for real on every
+      request, in this order, with nothing skipped or faked in between.</p>
+  </div>
+</header>
+
+<section class="section section--tight">
+  <div class="container">
+    <ol class="step-list" style="padding:0;">
+      <li class="step-item">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h3>The customer enters plot information</h3>
+          <p>Either a plot area directly, or a length and breadth, in square yards, square feet, square
+            meters or acres — typed in, or pre-filled from one of the quick-select sizes on the Home
+            and Predictor pages.</p>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h3>The application validates and converts the measurements</h3>
+          <p>The backend rejects empty, negative, non-numeric or non-finite values, checks that an
+            entered area agrees with length &times; breadth when both are given, and converts everything
+            into a single canonical unit — square yards — using the documented conversion constants
+            (1 sq yd = 9 sq ft = 0.836127 sq m; 1 acre = 4,840 sq yd).</p>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h3>The trained Linear Regression model processes the input features</h3>
+          <p>The plot area and the one-hot encoded locality are assembled into the exact feature row the
+            model was trained on, and passed to <code>model.predict(...)</code> — the real,
+            already-fitted <code>scikit-learn</code> <code>LinearRegression</code> object loaded from
+            <code>models/linear_regression_model.joblib</code>, not a stand-in formula.</p>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-number">4</div>
+        <div class="step-content">
+          <h3>The application calculates and displays the estimated price</h3>
+          <p>The model's raw output becomes the headline prediction, and the backend derives price per
+            square yard, per square foot and per acre from it, formats everything in
+            {{ currency_code }}, and returns it as structured JSON that the Predictor page renders —
+            including the plot size, dimensions and locality that produced it.</p>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-number">5</div>
+        <div class="step-content">
+          <h3>The customer reviews the result and its limitations</h3>
+          <p>Every result carries a disclaimer: this is a Linear Regression estimate trained on
+            synthetic demonstration data, not a verified market valuation. Plot sizes outside
+            {{ min_sqyd|commas }}&ndash;{{ max_sqyd|commas }} square yards are declined outright rather
+            than guessed at — see <a href="{{ url_for('insights_page') }}">Model Insights</a> for exactly
+            how accurate the model is on data it has never seen.</p>
+        </div>
+      </li>
+    </ol>
+
+    <div class="cta-section" style="margin-top:40px;">
+      <div class="cta-inner">
+        <div>
+          <h2>Try it on a real plot size</h2>
+          <p>Open the AI Price Predictor and see every one of these steps run live.</p>
+        </div>
+        <a class="btn btn-primary" href="{{ url_for('predictor_page') }}">Predict property price</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

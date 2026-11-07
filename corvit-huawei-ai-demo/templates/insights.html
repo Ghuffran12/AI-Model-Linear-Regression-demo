@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+{% block title %}Model Insights — {{ site_name }}{% endblock %}
+
+{% block content %}
+
+<header class="page-header">
+  <div class="container">
+    <p class="eyebrow">Under the hood</p>
+    <h1>Model insights</h1>
+    <p>A look at the actual trained model powering every prediction on this site: what Linear
+      Regression learned, how well it performs on data it has never seen, and the dataset behind it.</p>
+  </div>
+</header>
+
+{% if not metadata %}
+<section class="section">
+  <div class="container">
+    <div class="form-error" style="display:flex;">
+      <span aria-hidden="true">{% include "icons/_alert.svg" %}</span>
+      <span>No trained model was found yet. Run <code>python ml/train_model.py</code>, then reload this page.</span>
+    </div>
+  </div>
+</section>
+{% else %}
+
+<section class="section section--tight">
+  <div class="container">
+
+    <div class="metric-grid">
+      <div class="metric-tile">
+        <div class="metric-label">Test R&sup2; score</div>
+        <div class="metric-value">{{ "%.3f"|format(metadata.test_metrics.r2) }}</div>
+        <div class="metric-sub">Train: {{ "%.3f"|format(metadata.train_metrics.r2) }}</div>
+      </div>
+      <div class="metric-tile">
+        <div class="metric-label">Mean absolute error</div>
+        <div class="metric-value">{{ currency_code }} {{ metadata.test_metrics.mae|commas }}</div>
+        <div class="metric-sub">On held-out test records</div>
+      </div>
+      <div class="metric-tile">
+        <div class="metric-label">Root mean squared error</div>
+        <div class="metric-value">{{ currency_code }} {{ metadata.test_metrics.rmse|commas }}</div>
+        <div class="metric-sub">Penalizes large misses more</div>
+      </div>
+      <div class="metric-tile">
+        <div class="metric-label">Training records</div>
+        <div class="metric-value">{{ metadata.total_records|commas }}</div>
+        <div class="metric-sub">{{ metadata.training_records|commas }} train &middot; {{ metadata.testing_records|commas }} test</div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:24px;">
+      <span class="badge badge-cyan">{{ metadata.model_type }}</span>
+      <span class="badge badge-muted">Supported range {{ metadata.min_prediction_sqyd|commas }}&ndash;{{ metadata.max_prediction_sqyd|commas }} sq yd</span>
+      <span class="badge badge-synthetic">Synthetic training data</span>
+
+      <h3 style="margin-top:20px; font-size:1.05rem;">What Linear Regression learned</h3>
+      <p style="font-size:0.93rem;">
+        <code>sklearn.linear_model.LinearRegression</code> was fit on {{ metadata.training_records|commas }}
+        records using plot area (square yards) and the locality, one-hot encoded against
+        <strong>{{ metadata.baseline_location }}</strong> as the baseline, as its only two features. The model
+        learns one fixed price-per-square-yard slope plus a constant premium or discount for each other
+        locality relative to the baseline — the exact formula it arrived at is below.
+      </p>
+
+      <div class="formula-card">
+        Property_Price&nbsp;=&nbsp;<span class="formula-term">{{ metadata.intercept|commas }}</span><br>
+        {% for name, coef in metadata.coefficients.items() %}
+        <span class="formula-op">+</span>&nbsp;(<span class="formula-term">{{ coef|commas }}</span>&nbsp;&times;&nbsp;{{ name }})<br>
+        {% endfor %}
+      </div>
+      <p class="field-hint">Trained {{ metadata.trained_at_utc }} &middot; random_state={{ metadata.random_state }} &middot; currency: {{ metadata.currency }}</p>
+    </div>
+
+    <div class="card chart-card">
+      <h3>Actual vs. predicted price (test set)</h3>
+      <p class="chart-note">Each point is one held-out property. Points closer to the diagonal line are predictions that matched the actual (synthetic) price more closely.</p>
+      <div class="chart-container is-tall">
+        <canvas id="actualVsPredictedChart"></canvas>
+      </div>
+    </div>
+
+    <div class="card chart-card">
+      <h3>Sample property-price distribution</h3>
+      <p class="chart-note">Histogram of <code>Property_Price</code> across the full synthetic training dataset.</p>
+      <div class="chart-container">
+        <canvas id="priceDistributionChart"></canvas>
+      </div>
+    </div>
+
+    <div class="card table-card chart-card">
+      <h3>Dataset statistics by locality</h3>
+      <p class="chart-note" id="dataset-stats-note">Loading dataset statistics…</p>
+      <table class="data-table">
+        <thead>
+          <tr><th>Locality</th><th>Records</th><th>Share</th></tr>
+        </thead>
+        <tbody id="locality-table-body">
+          <tr><td colspan="3">Loading…</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</section>
+{% endif %}
+
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{{ url_for('static', filename='js/charts.js') }}"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  if (window.ChartsApp) {
+    window.ChartsApp.renderActualVsPredicted('actualVsPredictedChart');
+    window.ChartsApp.renderPriceDistribution('priceDistributionChart');
+    window.ChartsApp.renderLocalityTable('locality-table-body', 'dataset-stats-note');
+  }
+});
+</script>
+{% endblock %}

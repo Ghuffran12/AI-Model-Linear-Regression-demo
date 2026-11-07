@@ -1,0 +1,602 @@
+[
+  {
+    "area_sqyd": 900.6,
+    "actual_price": 136191545.0,
+    "predicted_price": 133050589.43583462
+  },
+  {
+    "area_sqyd": 6735.47,
+    "actual_price": 988607486.0,
+    "predicted_price": 1007368253.0914984
+  },
+  {
+    "area_sqyd": 2325.53,
+    "actual_price": 340967752.0,
+    "predicted_price": 357738864.03256917
+  },
+  {
+    "area_sqyd": 2241.74,
+    "actual_price": 316812828.0,
+    "predicted_price": 334267383.14063865
+  },
+  {
+    "area_sqyd": 6242.28,
+    "actual_price": 952178584.0,
+    "predicted_price": 945385102.8616931
+  },
+  {
+    "area_sqyd": 1501.2,
+    "actual_price": 243034736.0,
+    "predicted_price": 234061216.9899926
+  },
+  {
+    "area_sqyd": 618.58,
+    "actual_price": 103900824.0,
+    "predicted_price": 101638079.6145253
+  },
+  {
+    "area_sqyd": 1136.86,
+    "actual_price": 196118134.0,
+    "predicted_price": 185212911.6017613
+  },
+  {
+    "area_sqyd": 1409.76,
+    "actual_price": 201100824.0,
+    "predicted_price": 209441974.886077
+  },
+  {
+    "area_sqyd": 182.71,
+    "actual_price": 59228421.0,
+    "predicted_price": 50521304.68589221
+  },
+  {
+    "area_sqyd": 3791.25,
+    "actual_price": 581010995.0,
+    "predicted_price": 577646911.5660148
+  },
+  {
+    "area_sqyd": 811.13,
+    "actual_price": 95899252.0,
+    "predicted_price": 119627034.45069598
+  },
+  {
+    "area_sqyd": 6500.3,
+    "actual_price": 956799820.0,
+    "predicted_price": 973196793.1944218
+  },
+  {
+    "area_sqyd": 280.04,
+    "actual_price": 67762390.0,
+    "predicted_price": 65124128.053541064
+  },
+  {
+    "area_sqyd": 6379.55,
+    "actual_price": 979015045.0,
+    "predicted_price": 980258898.0032775
+  },
+  {
+    "area_sqyd": 7435.68,
+    "actual_price": 1101163280.0,
+    "predicted_price": 1113535732.0789526
+  },
+  {
+    "area_sqyd": 3234.15,
+    "actual_price": 478526983.0,
+    "predicted_price": 483162769.33490974
+  },
+  {
+    "area_sqyd": 290.36,
+    "actual_price": 45193057.0,
+    "predicted_price": 41493752.57285264
+  },
+  {
+    "area_sqyd": 3648.11,
+    "actual_price": 546111230.0,
+    "predicted_price": 561986159.1308703
+  },
+  {
+    "area_sqyd": 2929.07,
+    "actual_price": 434791643.0,
+    "predicted_price": 454105607.2529886
+  },
+  {
+    "area_sqyd": 5350.57,
+    "actual_price": 790140389.0,
+    "predicted_price": 799585965.1858485
+  },
+  {
+    "area_sqyd": 537.08,
+    "actual_price": 83824553.0,
+    "predicted_price": 77398106.8488089
+  },
+  {
+    "area_sqyd": 302.45,
+    "actual_price": 65579348.0,
+    "predicted_price": 60022920.373980775
+  },
+  {
+    "area_sqyd": 2688.65,
+    "actual_price": 414183183.0,
+    "predicted_price": 418034398.0261301
+  },
+  {
+    "area_sqyd": 525.0,
+    "actual_price": 78036681.0,
+    "predicted_price": 87597884.2919672
+  },
+  {
+    "area_sqyd": 4848.47,
+    "actual_price": 754640331.0,
+    "predicted_price": 725365890.8684852
+  },
+  {
+    "area_sqyd": 5229.46,
+    "actual_price": 805996757.0,
+    "predicted_price": 793427519.760675
+  },
+  {
+    "area_sqyd": 132.75,
+    "actual_price": 47545277.0,
+    "predicted_price": 43025598.78382978
+  },
+  {
+    "area_sqyd": 436.61,
+    "actual_price": 66030866.0,
+    "predicted_price": 63436246.33139209
+  },
+  {
+    "area_sqyd": 1117.51,
+    "actual_price": 197862725.0,
+    "predicted_price": 190773223.76611564
+  },
+  {
+    "area_sqyd": 410.39,
+    "actual_price": 64204239.0,
+    "predicted_price": 58390280.973462835
+  },
+  {
+    "area_sqyd": 141.61,
+    "actual_price": 36150028.0,
+    "predicted_price": 30076293.303341977
+  },
+  {
+    "area_sqyd": 4393.26,
+    "actual_price": 662632465.0,
+    "predicted_price": 657068847.5602818
+  },
+  {
+    "area_sqyd": 191.22,
+    "actual_price": 42118183.0,
+    "predicted_price": 43334622.385862194
+  },
+  {
+    "area_sqyd": 206.5,
+    "actual_price": 43836451.0,
+    "predicted_price": 39812008.9955924
+  },
+  {
+    "area_sqyd": 258.03,
+    "actual_price": 23370768.0,
+    "predicted_price": 36643148.65344354
+  },
+  {
+    "area_sqyd": 1567.81,
+    "actual_price": 257885448.0,
+    "predicted_price": 258333599.4206135
+  },
+  {
+    "area_sqyd": 257.81,
+    "actual_price": 53695757.0,
+    "predicted_price": 47510260.99388751
+  },
+  {
+    "area_sqyd": 238.43,
+    "actual_price": 38598592.0,
+    "predicted_price": 32590409.33778116
+  },
+  {
+    "area_sqyd": 684.29,
+    "actual_price": 123418989.0,
+    "predicted_price": 111496823.3059689
+  },
+  {
+    "area_sqyd": 2202.1,
+    "actual_price": 336559291.0,
+    "predicted_price": 345035284.6024215
+  },
+  {
+    "area_sqyd": 2461.39,
+    "actual_price": 388153392.0,
+    "predicted_price": 383937638.1521767
+  },
+  {
+    "area_sqyd": 482.16,
+    "actual_price": 72464344.0,
+    "predicted_price": 69158231.5857731
+  },
+  {
+    "area_sqyd": 536.02,
+    "actual_price": 92526233.0,
+    "predicted_price": 77239070.65472992
+  },
+  {
+    "area_sqyd": 3752.67,
+    "actual_price": 589031814.0,
+    "predicted_price": 577673729.3694541
+  },
+  {
+    "area_sqyd": 1190.74,
+    "actual_price": 166441706.0,
+    "predicted_price": 193296751.3536253
+  },
+  {
+    "area_sqyd": 217.21,
+    "actual_price": 58324065.0,
+    "predicted_price": 47234009.82370452
+  },
+  {
+    "area_sqyd": 3758.88,
+    "actual_price": 553349345.0,
+    "predicted_price": 561890186.4283688
+  },
+  {
+    "area_sqyd": 3536.85,
+    "actual_price": 538066890.0,
+    "predicted_price": 539478224.9870582
+  },
+  {
+    "area_sqyd": 2676.62,
+    "actual_price": 402969939.0,
+    "predicted_price": 399514232.27372336
+  },
+  {
+    "area_sqyd": 5571.11,
+    "actual_price": 859301390.0,
+    "predicted_price": 833786565.6696539
+  },
+  {
+    "area_sqyd": 628.14,
+    "actual_price": 131320060.0,
+    "predicted_price": 117351014.05249889
+  },
+  {
+    "area_sqyd": 2649.74,
+    "actual_price": 399940092.0,
+    "predicted_price": 395481314.4465128
+  },
+  {
+    "area_sqyd": 335.96,
+    "actual_price": 76870953.0,
+    "predicted_price": 73514037.4619344
+  },
+  {
+    "area_sqyd": 871.16,
+    "actual_price": 113777543.0,
+    "predicted_price": 127521514.12985408
+  },
+  {
+    "area_sqyd": 3520.23,
+    "actual_price": 560806744.0,
+    "predicted_price": 551263265.4995713
+  },
+  {
+    "area_sqyd": 1126.27,
+    "actual_price": 185356335.0,
+    "predicted_price": 192087522.87944764
+  },
+  {
+    "area_sqyd": 618.8,
+    "actual_price": 116204627.0,
+    "predicted_price": 101671087.12650394
+  },
+  {
+    "area_sqyd": 1013.08,
+    "actual_price": 164625209.0,
+    "predicted_price": 160826549.95807275
+  },
+  {
+    "area_sqyd": 265.2,
+    "actual_price": 31676554.0,
+    "predicted_price": 37718893.47565706
+  },
+  {
+    "area_sqyd": 439.74,
+    "actual_price": 83707663.0,
+    "predicted_price": 74805973.0587838
+  },
+  {
+    "area_sqyd": 822.25,
+    "actual_price": 118954856.0,
+    "predicted_price": 138010669.1308273
+  },
+  {
+    "area_sqyd": 429.23,
+    "actual_price": 84731468.0,
+    "predicted_price": 73229114.1910761
+  },
+  {
+    "area_sqyd": 1223.81,
+    "actual_price": 185017549.0,
+    "predicted_price": 180431055.49018872
+  },
+  {
+    "area_sqyd": 3388.7,
+    "actual_price": 532370409.0,
+    "predicted_price": 517250666.35233927
+  },
+  {
+    "area_sqyd": 309.85,
+    "actual_price": 76819356.0,
+    "predicted_price": 69596645.92664918
+  },
+  {
+    "area_sqyd": 352.67,
+    "actual_price": 55765944.0,
+    "predicted_price": 61742500.02250325
+  },
+  {
+    "area_sqyd": 133.92,
+    "actual_price": 25189188.0,
+    "predicted_price": 28922530.72554253
+  },
+  {
+    "area_sqyd": 724.05,
+    "actual_price": 143486571.0,
+    "predicted_price": 131740788.93374003
+  },
+  {
+    "area_sqyd": 642.73,
+    "actual_price": 90047869.0,
+    "predicted_price": 105261404.22490977
+  },
+  {
+    "area_sqyd": 5326.26,
+    "actual_price": 787116353.0,
+    "predicted_price": 797050705.1788616
+  },
+  {
+    "area_sqyd": 3476.88,
+    "actual_price": 522895280.0,
+    "predicted_price": 536295812.42129964
+  },
+  {
+    "area_sqyd": 150.82,
+    "actual_price": 48096532.0,
+    "predicted_price": 45736715.790440425
+  },
+  {
+    "area_sqyd": 241.04,
+    "actual_price": 49679016.0,
+    "predicted_price": 44994188.37624165
+  },
+  {
+    "area_sqyd": 4146.91,
+    "actual_price": 629350799.0,
+    "predicted_price": 620107935.8514531
+  },
+  {
+    "area_sqyd": 247.54,
+    "actual_price": 34483338.0,
+    "predicted_price": 33957220.40198831
+  },
+  {
+    "area_sqyd": 335.59,
+    "actual_price": 61512301.0,
+    "predicted_price": 73458524.82815212
+  },
+  {
+    "area_sqyd": 129.89,
+    "actual_price": 15348929.0,
+    "predicted_price": 17417773.26732904
+  },
+  {
+    "area_sqyd": 1063.53,
+    "actual_price": 175048736.0,
+    "predicted_price": 168395772.59136036
+  },
+  {
+    "area_sqyd": 2630.68,
+    "actual_price": 397758929.0,
+    "predicted_price": 409336918.6197537
+  },
+  {
+    "area_sqyd": 149.23,
+    "actual_price": 36019196.0,
+    "predicted_price": 37034688.62229931
+  },
+  {
+    "area_sqyd": 344.6,
+    "actual_price": 58291951.0,
+    "predicted_price": 66346859.60080087
+  },
+  {
+    "area_sqyd": 9227.41,
+    "actual_price": 1386678868.0,
+    "predicted_price": 1393256531.1928308
+  },
+  {
+    "area_sqyd": 203.84,
+    "actual_price": 44724215.0,
+    "predicted_price": 39412918.168941356
+  },
+  {
+    "area_sqyd": 337.81,
+    "actual_price": 56468522.0,
+    "predicted_price": 65328127.753823206
+  },
+  {
+    "area_sqyd": 2321.38,
+    "actual_price": 334829251.0,
+    "predicted_price": 346216102.4769128
+  },
+  {
+    "area_sqyd": 2346.31,
+    "actual_price": 359132052.0,
+    "predicted_price": 349956453.72067606
+  },
+  {
+    "area_sqyd": 7258.48,
+    "actual_price": 1077859819.0,
+    "predicted_price": 1085837611.4549427
+  },
+  {
+    "area_sqyd": 3498.39,
+    "actual_price": 531525765.0,
+    "predicted_price": 521695721.83752996
+  },
+  {
+    "area_sqyd": 2586.23,
+    "actual_price": 411662655.0,
+    "predicted_price": 411131373.735634
+  },
+  {
+    "area_sqyd": 4209.62,
+    "actual_price": 637165544.0,
+    "predicted_price": 629516577.1068242
+  },
+  {
+    "area_sqyd": 681.0,
+    "actual_price": 110819665.0,
+    "predicted_price": 111003210.96774262
+  },
+  {
+    "area_sqyd": 2307.14,
+    "actual_price": 347654833.0,
+    "predicted_price": 360794871.23077697
+  },
+  {
+    "area_sqyd": 3762.77,
+    "actual_price": 575101096.0,
+    "predicted_price": 587652547.114588
+  },
+  {
+    "area_sqyd": 1663.4,
+    "actual_price": 234249411.0,
+    "predicted_price": 247496635.5145621
+  },
+  {
+    "area_sqyd": 145.42,
+    "actual_price": 21382657.0,
+    "predicted_price": 19747803.544731557
+  },
+  {
+    "area_sqyd": 1980.82,
+    "actual_price": 293226254.0,
+    "predicted_price": 294008403.86729604
+  },
+  {
+    "area_sqyd": 7232.84,
+    "actual_price": 1099226527.0,
+    "predicted_price": 1083102806.0346303
+  },
+  {
+    "area_sqyd": 178.97,
+    "actual_price": 25260606.0,
+    "predicted_price": 24781449.121476848
+  },
+  {
+    "area_sqyd": 251.15,
+    "actual_price": 53672073.0,
+    "predicted_price": 52326168.717139244
+  },
+  {
+    "area_sqyd": 235.42,
+    "actual_price": 40680025.0,
+    "predicted_price": 49966131.610665224
+  },
+  {
+    "area_sqyd": 205.67,
+    "actual_price": 42255131.0,
+    "predicted_price": 39687480.65494564
+  },
+  {
+    "area_sqyd": 249.94,
+    "actual_price": 57661841.0,
+    "predicted_price": 60608100.27827927
+  },
+  {
+    "area_sqyd": 1816.75,
+    "actual_price": 269404123.0,
+    "predicted_price": 270504371.70514
+  },
+  {
+    "area_sqyd": 3844.81,
+    "actual_price": 595717924.0,
+    "predicted_price": 574782620.5389419
+  },
+  {
+    "area_sqyd": 143.24,
+    "actual_price": 36858013.0,
+    "predicted_price": 36135984.09160768
+  },
+  {
+    "area_sqyd": 1032.62,
+    "actual_price": 171033782.0,
+    "predicted_price": 169573352.2896919
+  },
+  {
+    "area_sqyd": 267.77,
+    "actual_price": 49438604.0,
+    "predicted_price": 38104481.229225926
+  },
+  {
+    "area_sqyd": 200.04,
+    "actual_price": 31122025.0,
+    "predicted_price": 27942668.5641601
+  },
+  {
+    "area_sqyd": 136.37,
+    "actual_price": 18087874.0,
+    "predicted_price": 18389994.52924587
+  },
+  {
+    "area_sqyd": 473.39,
+    "actual_price": 89351959.0,
+    "predicted_price": 85669757.18139775
+  },
+  {
+    "area_sqyd": 1546.86,
+    "actual_price": 232167775.0,
+    "predicted_price": 230011656.21459496
+  },
+  {
+    "area_sqyd": 1118.93,
+    "actual_price": 186481538.0,
+    "predicted_price": 176707664.2441678
+  },
+  {
+    "area_sqyd": 6937.3,
+    "actual_price": 1021845209.0,
+    "predicted_price": 1037649644.6490097
+  },
+  {
+    "area_sqyd": 397.11,
+    "actual_price": 60851690.0,
+    "predicted_price": 57509897.58976947
+  },
+  {
+    "area_sqyd": 848.48,
+    "actual_price": 127308455.0,
+    "predicted_price": 141946064.76355547
+  },
+  {
+    "area_sqyd": 220.31,
+    "actual_price": 33658351.0,
+    "predicted_price": 30983860.69055733
+  },
+  {
+    "area_sqyd": 835.86,
+    "actual_price": 132566784.0,
+    "predicted_price": 134237498.71781042
+  },
+  {
+    "area_sqyd": 3905.52,
+    "actual_price": 605211632.0,
+    "predicted_price": 600606448.4873533
+  },
+  {
+    "area_sqyd": 1946.61,
+    "actual_price": 303882668.0,
+    "predicted_price": 315166533.68204767
+  }
+]

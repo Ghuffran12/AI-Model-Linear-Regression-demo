@@ -1,0 +1,161 @@
+{% extends "base.html" %}
+{% block title %}AI Price Predictor — {{ site_name }}{% endblock %}
+
+{% block content %}
+
+<header class="page-header">
+  <div class="container">
+    <p class="eyebrow">Live prediction</p>
+    <h1>AI Price Predictor</h1>
+    <p>Enter a plot size directly, or work it out from length &amp; breadth. Every estimate below is
+      produced live by the trained Linear Regression model — nothing here is a fixed demo number.</p>
+  </div>
+</header>
+
+<section class="section section--tight">
+  <div class="container">
+
+    <div class="quick-size-grid" id="quick-size-picker" style="margin-bottom: 32px;" aria-label="Quick plot size selection">
+      {% for size in quick_sizes %}
+      <button type="button" class="quick-size-chip" data-size="{{ size }}">{{ size|commas }} <span>sq yd</span></button>
+      {% endfor %}
+    </div>
+
+    <div class="predictor-grid">
+      <!-- ===================== FORM ===================== -->
+      <div class="predictor-card">
+        <h2>Plot details</h2>
+
+        <div class="mode-tabs" id="mode-tabs" role="tablist" aria-label="Input mode">
+          <button type="button" class="mode-tab is-active" data-mode="area" role="tab" aria-selected="true">By area</button>
+          <button type="button" class="mode-tab" data-mode="dimensions" role="tab" aria-selected="false">By dimensions</button>
+        </div>
+
+        <div id="form-error" class="form-error" hidden>
+          <span aria-hidden="true">{% include "icons/_alert.svg" %}</span>
+          <span id="form-error-text"></span>
+        </div>
+
+        <form id="predictor-form" novalidate>
+
+          <!-- ---- Area mode ---- -->
+          <div id="mode-area-fields" data-mode-fields="area">
+            <div class="field">
+              <label for="input-area">Plot area</label>
+              <input class="input" type="number" id="input-area" name="area" min="0" step="any"
+                     placeholder="e.g. 500" value="{{ request.args.get('size', '') }}" inputmode="decimal">
+              <p class="field-hint">Supported prediction range: {{ min_sqyd|commas }}&ndash;{{ max_sqyd|commas }} square yards (converted from whichever unit you pick below).</p>
+            </div>
+            <div class="field">
+              <label for="input-ratio">Length : width ratio <span style="color:var(--ink-600); font-weight:400;">(optional)</span></label>
+              <input class="input" type="number" id="input-ratio" name="ratio" min="0.1" step="0.1" placeholder="1.0 = square plot">
+              <p class="field-hint">Used only to <em>estimate</em> a plausible length and breadth for display — it never changes the predicted price.</p>
+            </div>
+          </div>
+
+          <!-- ---- Dimensions mode ---- -->
+          <div id="mode-dimensions-fields" data-mode-fields="dimensions" hidden>
+            <div class="field-row">
+              <div class="field">
+                <label for="input-length">Plot length</label>
+                <input class="input" type="number" id="input-length" name="length" min="0" step="any" placeholder="e.g. 50" inputmode="decimal">
+              </div>
+              <div class="field">
+                <label for="input-breadth">Plot breadth / width</label>
+                <input class="input" type="number" id="input-breadth" name="breadth" min="0" step="any" placeholder="e.g. 10" inputmode="decimal">
+              </div>
+            </div>
+            <div class="field">
+              <label for="input-area-check">Plot area <span style="color:var(--ink-600); font-weight:400;">(optional cross-check)</span></label>
+              <input class="input" type="number" id="input-area-check" name="area_check" min="0" step="any" placeholder="Leave blank to auto-calculate from length × breadth" inputmode="decimal">
+              <p class="field-hint">If you enter a value here, it must roughly agree with length &times; breadth or the request will be rejected.</p>
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="input-unit">Measurement unit</label>
+              <select class="input" id="input-unit" name="unit">
+                <option value="sqyd" selected>Square yards</option>
+                <option value="sqft">Square feet</option>
+                <option value="sqm">Square meters</option>
+                <option value="acre">Acres</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="input-location">Locality</label>
+              <select class="input" id="input-location" name="location">
+                {% for loc in locations %}
+                <option value="{{ loc }}">{{ loc }}{{ ' (baseline)' if loc == (metadata.baseline_location if metadata else locations[0]) else '' }}</option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+
+          <p class="live-readout" id="live-readout" aria-live="polite"></p>
+
+          <button type="submit" class="btn btn-primary btn-block" id="predict-btn">
+            <span id="predict-btn-label">Predict property price</span>
+          </button>
+        </form>
+
+        <div class="card converter-card">
+          <h3 style="font-size:1rem; margin-bottom:4px;">Unit conversion</h3>
+          <p class="field-hint" style="margin-top:0;">Updates live as you type — this is plain unit math, independent of the prediction range below.</p>
+          <div class="converter-output" id="converter-output">
+            <div class="result-chip"><span class="value" id="conv-sqyd">—</span><span class="label">sq yards</span></div>
+            <div class="result-chip"><span class="value" id="conv-sqft">—</span><span class="label">sq feet</span></div>
+            <div class="result-chip"><span class="value" id="conv-sqm">—</span><span class="label">sq meters</span></div>
+            <div class="result-chip"><span class="value" id="conv-acre">—</span><span class="label">acres</span></div>
+          </div>
+          <p class="field-hint" id="range-note"></p>
+        </div>
+      </div>
+
+      <!-- ===================== RESULT ===================== -->
+      <div class="predictor-card result-card">
+        <h2>Prediction result</h2>
+
+        <div id="result-empty" class="result-empty">
+          <span aria-hidden="true">{% include "icons/_coin.svg" %}</span>
+          <p class="mb-0">Enter a plot size and click <strong>Predict property price</strong> to see a live
+            estimate from the trained model.</p>
+        </div>
+
+        <div id="result-content" hidden>
+          <span class="badge badge-cyan" id="result-location-badge">—</span>
+          <div class="result-price" id="result-price" style="margin-top:14px;">—</div>
+          <div class="result-price-sub" id="result-price-sub">—</div>
+
+          <div class="result-chip-grid">
+            <div class="result-chip"><span class="value" id="chip-sqyd">—</span><span class="label">sq yd price</span></div>
+            <div class="result-chip"><span class="value" id="chip-sqft">—</span><span class="label">sq ft price</span></div>
+            <div class="result-chip"><span class="value" id="chip-acre">—</span><span class="label">acre price</span></div>
+            <div class="result-chip"><span class="value" id="chip-area">—</span><span class="label">plot area (sq yd)</span></div>
+          </div>
+
+          <div class="result-meta-list" id="result-meta-list"></div>
+
+          <p class="result-disclaimer" id="result-disclaimer"></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card chart-card" style="margin-top:28px;">
+      <h3>Plot size vs. predicted price</h3>
+      <p class="chart-note">The line is the model's prediction across the quick-select sizes; the marker is your current plot.</p>
+      <div class="chart-container">
+        <canvas id="sizeVsPriceChart"></canvas>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+{% endblock %}
+
+{% block extra_scripts %}
+<script>window.APP_LOCATIONS = {{ locations|tojson }};</script>
+<script src="{{ url_for('static', filename='js/charts.js') }}"></script>
+<script src="{{ url_for('static', filename='js/predictor.js') }}"></script>
+{% endblock %}

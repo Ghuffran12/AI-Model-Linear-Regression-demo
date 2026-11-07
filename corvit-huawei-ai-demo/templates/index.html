@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+{% block title %}{{ site_name }} — AI-Powered Property Price Prediction{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow"> Huawei AI demonstration</p>
+      <h1>AI-powered property price prediction</h1>
+      <p class="hero-lead">
+        Enter a plot's size and location and a Linear Regression model — trained on a documented
+        synthetic property dataset — estimates its value in seconds, with the full working out
+        shown alongside the number.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="{{ url_for('predictor_page') }}">Predict property price</a>
+        <a class="btn btn-ghost" href="{{ url_for('how_it_works_page') }}">See how it works</a>
+      </div>
+
+      <dl class="hero-stats" id="hero-stats" aria-label="Model summary">
+        <div class="hero-stat">
+          <dt>Training records</dt>
+          <dd id="stat-records">—</dd>
+        </div>
+        <div class="hero-stat">
+          <dt>Test R&sup2; score</dt>
+          <dd id="stat-r2">—</dd>
+        </div>
+        <div class="hero-stat">
+          <dt>Supported plot size</dt>
+          <dd id="stat-range">{{ min_sqyd|commas }}&ndash;{{ max_sqyd|commas }} sq yd</dd>
+        </div>
+      </dl>
+    </div>
+
+    <div class="hero-visual" aria-hidden="true">
+      <svg class="plot-diagram" viewBox="0 0 560 400" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="plotGrid" width="28" height="28" patternUnits="userSpaceOnUse">
+            <path d="M 28 0 L 0 0 0 28" fill="none" stroke="#1A2B55" stroke-width="1"/>
+          </pattern>
+        </defs>
+        <rect width="560" height="400" fill="url(#plotGrid)"/>
+
+        <polygon class="plot-shape" points="90,330 90,150 250,95 470,95 470,330" fill="rgba(47,78,224,0.10)" stroke="#4C68F0" stroke-width="2"/>
+
+        <circle cx="90" cy="330" r="4.5" fill="#26D9E5"/>
+        <circle cx="90" cy="150" r="4.5" fill="#26D9E5"/>
+        <circle cx="250" cy="95" r="4.5" fill="#26D9E5"/>
+        <circle cx="470" cy="95" r="4.5" fill="#26D9E5"/>
+        <circle cx="470" cy="330" r="4.5" fill="#26D9E5"/>
+
+        <g stroke="#6B7AA3" stroke-width="1">
+          <line x1="58" y1="150" x2="58" y2="330"/>
+          <line x1="52" y1="150" x2="64" y2="150"/>
+          <line x1="52" y1="330" x2="64" y2="330"/>
+        </g>
+        <text x="36" y="240" fill="#8A96B8" font-size="13" font-family="IBM Plex Sans, sans-serif" transform="rotate(-90 36 240)" text-anchor="middle">Breadth</text>
+
+        <g stroke="#6B7AA3" stroke-width="1">
+          <line x1="90" y1="356" x2="470" y2="356"/>
+          <line x1="90" y1="350" x2="90" y2="362"/>
+          <line x1="470" y1="350" x2="470" y2="362"/>
+        </g>
+        <text x="280" y="380" fill="#8A96B8" font-size="13" font-family="IBM Plex Sans, sans-serif" text-anchor="middle">Length</text>
+
+        <circle class="pulse-ring" cx="300" cy="213" r="9" fill="none" stroke="#26D9E5" stroke-width="1.5"/>
+        <circle class="pulse-ring pulse-ring-delay" cx="300" cy="213" r="9" fill="none" stroke="#26D9E5" stroke-width="1.5"/>
+        <circle cx="300" cy="213" r="4.5" fill="#26D9E5"/>
+        <text x="300" y="195" fill="#EEF2FC" font-size="12" font-family="IBM Plex Sans, sans-serif" text-anchor="middle">model estimate</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="section quick-select-section">
+  <div class="container">
+    <div class="section-head">
+      <h2>Jump straight to a plot size</h2>
+      <p>Pick a common size to pre-fill the predictor, or enter any custom size from
+        {{ min_sqyd|commas }} to {{ max_sqyd|commas }} square yards once there.</p>
+    </div>
+    <div class="quick-size-grid">
+      {% for size in quick_sizes %}
+      <a class="quick-size-chip" href="{{ url_for('predictor_page') }}?size={{ size }}">{{ size|commas }} <span>sq yd</span></a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section features-section">
+  <div class="container">
+    <div class="section-head">
+      <h2>What the demo shows</h2>
+      <p>Every number on this site is produced live by the pipeline below — nothing is hardcoded.</p>
+    </div>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <span class="feature-icon" aria-hidden="true">{% include "icons/_ruler.svg" %}</span>
+        <h3>Real measurement math</h3>
+        <p>Length &times; breadth, and conversion between square yards, square feet, square
+          meters and acres, computed consistently on the backend.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon" aria-hidden="true">{% include "icons/_chart.svg" %}</span>
+        <h3>A genuine Linear Regression model</h3>
+        <p>Scikit-learn's <code>LinearRegression</code>, trained on a documented synthetic
+          dataset and evaluated with R&sup2;, MAE and RMSE on a held-out test set.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon" aria-hidden="true">{% include "icons/_coin.svg" %}</span>
+        <h3>Transparent, formatted output</h3>
+        <p>Predicted price, price per square yard, per square foot and per acre — formatted in
+          {{ currency_code }}, with a clear demonstration disclaimer.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon" aria-hidden="true">{% include "icons/_shield.svg" %}</span>
+        <h3>Validated on both ends</h3>
+        <p>Plot sizes outside {{ min_sqyd|commas }}&ndash;{{ max_sqyd|commas }} sq yd, bad units
+          or inconsistent dimensions are rejected with a clear message, not a guess.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section cta-section">
+  <div class="container cta-inner">
+    <div>
+      <h2>Ready to see a prediction?</h2>
+      <p>Open the AI Price Predictor, choose a plot size and locality, and get a live estimate.</p>
+    </div>
+    <a class="btn btn-primary" href="{{ url_for('predictor_page') }}">Predict property price</a>
+  </div>
+</section>
+
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+(function () {
+  fetch('/api/model-info').then(function (r) { return r.json(); }).then(function (res) {
+    if (!res.success) return;
+    var m = res.data;
+    document.getElementById('stat-records').textContent = m.total_records.toLocaleString();
+    document.getElementById('stat-r2').textContent = m.test_metrics.r2.toFixed(3);
+  }).catch(function () {});
+})();
+</script>
+{% endblock %}

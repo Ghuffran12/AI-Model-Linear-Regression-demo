@@ -1,0 +1,44 @@
+{
+  "model_type": "LinearRegression",
+  "trained_at_utc": "2026-11-03T19:55:50.601345+00:00",
+  "feature_columns": [
+    "Plot_Area_SqYards",
+    "Loc_DHA Phase 6",
+    "Loc_Bahria Town",
+    "Loc_Gulshan-e-Iqbal",
+    "Loc_Clifton"
+  ],
+  "locations": [
+    "Askari",
+    "DHA Phase 6",
+    "Bahria Town",
+    "Gulshan-e-Iqbal",
+    "Clifton"
+  ],
+  "baseline_location": "Askari",
+  "intercept": -2070161.873161137,
+  "coefficients": {
+    "Plot_Area_SqYards": 150034.1453575347,
+    "Loc_DHA Phase 6": 16715254.983755546,
+    "Loc_Bahria Town": 10900119.852422623,
+    "Loc_Gulshan-e-Iqbal": -1112070.0666546933,
+    "Loc_Clifton": 25178727.860778183
+  },
+  "training_records": 480,
+  "testing_records": 120,
+  "total_records": 600,
+  "train_metrics": {
+    "r2": 0.9991910659607407,
+    "mae": 8303017.29239383,
+    "rmse": 10645268.342207782
+  },
+  "test_metrics": {
+    "r2": 0.9988970843739756,
+    "mae": 8227148.043170215,
+    "rmse": 10247774.717677215
+  },
+  "min_prediction_sqyd": 120,
+  "max_prediction_sqyd": 10000,
+  "currency": "PKR",
+  "random_state": 42
+}
